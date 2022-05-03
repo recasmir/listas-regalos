@@ -1,0 +1,32 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+
+import { regalo } from './regalo.component';
+
+<Meta title="MDX/Regalo" component={regalo} />
+
+export const Template = (args) => ({ props: args });
+
+# Regalo
+
+With `MDX`, we can define a story for `Regalo` right in the middle of our
+Markdown documentation.
+
+<Canvas>
+  <Story 
+    name="Unchecked"
+    args={{ 
+      label: 'Unchecked',
+    }}>
+    {Template.bind({})}
+  </Story>
+
+  <Story 
+    name="Checked"
+    args={{ 
+      label: 'Unchecked',
+      checked: true,
+    }}>
+    {Template.bind({})}
+  </Story>
+
+</Canvas>
