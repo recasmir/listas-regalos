@@ -2,6 +2,47 @@
     "pipes": [],
     "interfaces": [
         {
+            "name": "Present",
+            "id": "interface-Present-3674390ff2e4ff68ed195c52de3bd548277d0fc9c9f31e718074f265b9f11a52bcbaf8ae09656bf40223580de47040ce638fae1f8511d4fe63b1a336fa8ead03",
+            "file": "src/app/models/present.model.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "export interface Present {\r\n    title : string,\r\n    content: string,\r\n    categories: string[]\r\n}",
+            "properties": [
+                {
+                    "name": "categories",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 4
+                },
+                {
+                    "name": "content",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 3
+                },
+                {
+                    "name": "title",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 2
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 165,
+            "methods": []
+        },
+        {
             "name": "User",
             "id": "interface-User-9c7e5f1bbbab702cb032307d130876cb68969b0cd4eedef32a0c8cad8081a54e5f8f577ed6ad4539c1b99a1d246cb34031d198c2ea8eba440e64e91b14f01fdc",
             "file": "src/stories/User.ts",
@@ -350,7 +391,7 @@
         },
         {
             "name": "RegaloComponent",
-            "id": "component-RegaloComponent-f6286e890513e680336d02f3936183ca7c7aba3f359fea11a50b97dc5269c2d0be7c3557a67991ebdb4fb2a6e23c466d4fb8899e9388ebf83e85708c8eaf9ad5",
+            "id": "component-RegaloComponent-dca8be4e5de35268cd44047c75787923640faf7edd064cdea8d8e7d74f51c857e276e9d126d7c649dc604648def7e5490cb2013c3767f5590f2902ec823f26be",
             "file": "src/app/regalo/regalo.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -366,8 +407,27 @@
                 "./regalo.component.html"
             ],
             "viewProviders": [],
-            "inputsClass": [],
-            "outputsClass": [],
+            "inputsClass": [
+                {
+                    "name": "presents",
+                    "defaultValue": "[]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 11,
+                    "type": "Present[]",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "onViewDetails",
+                    "defaultValue": "new EventEmitter<Event>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 13,
+                    "type": "EventEmitter"
+                }
+            ],
             "propertiesClass": [],
             "methodsClass": [
                 {
@@ -376,7 +436,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 12,
+                    "line": 17,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -388,11 +448,11 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'app-regalo',\n  templateUrl: './regalo.component.html',\n  styleUrls: ['./regalo.component.css']\n})\nexport class RegaloComponent implements OnInit {\n\n  constructor() { }\n\n  ngOnInit(): void {\n  }\n\n}\n",
+            "sourceCode": "import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';\nimport { Present } from '../models/present.model';\n\n@Component({\n  selector: 'app-regalo',\n  templateUrl: './regalo.component.html',\n  styleUrls: ['./regalo.component.css']\n})\nexport class RegaloComponent implements OnInit {\n\n  @Input() presents: Present [] = []; \n\n  @Output() onViewDetails = new EventEmitter<Event>();\n\n  constructor() { }\n\n  ngOnInit(): void {\n  }\n\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "",
+                    "data": ".main{\r\n    width: 80vw;\r\n    margin-top: 20px;\r\n    margin-left: auto;\r\n    margin-right: auto;\r\n}\r\n\r\n.card:hover{\r\n    background-color: rgba(126, 101, 255, 0.4);\r\n    border-color: rgba(126, 101, 255, 1);\r\n    cursor: pointer;\r\n}\r\n\r\n.category {\r\n    font-family: 'Montserrat', sans-serif;\r\n    background-color: #569b51;\r\n    border-color: #569b51;\r\n    color: white;\r\n}\r\n\r\n@media screen and (min-width: 834px) {\r\n    .scrollmenu {\r\n        overflow: auto;\r\n        white-space: nowrap;\r\n      }\r\n    .card {\r\n        min-width: 350px;\r\n        max-width: 350px;\r\n    }\r\n  }",
                     "styleUrl": "./regalo.component.css"
                 }
             ],
@@ -403,12 +463,12 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "args": [],
-                "line": 8
+                "line": 13
             },
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<div class=\"card\" style=\"width: 18rem;\">\n    <div class=\"card-body\">\n      <h5 class=\"card-title\">Special title treatment</h5>\n      <p class=\"card-text\">With supporting text below as a natural lead-in to additional content.</p>\n      <a href=\"#\" class=\"btn btn-primary\">Go somewhere</a>\n    </div>\n  </div>\n"
+            "templateData": "<div class=\"main\">\n  <h2>Listas de Regalos</h2>\n  <div class=\"scrollmenu d-lg-flex d-inline\">\n    <div *ngFor=\"let present of presents\" (click)=\"onViewDetails.emit($event)\" class=\"card mb-2 me-2\">\n        <div class=\"card-body\">\n          <h4 class=\"card-title\">{{present.title}} 🎉</h4>\n          <p class=\"card-text text-wrap\">{{present.content}} \t\n            🎉</p>\n          <a *ngFor=\"let cat of present.categories\" class=\"btn btn-primary rounded-pill m-1 py-0 category text-wrap\">{{cat}}</a>\n        </div>\n    </div>\n  </div>\n</div>"
         }
     ],
     "modules": [
@@ -615,21 +675,21 @@
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/stories/regalo.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story<RegaloComponent>",
-                "defaultValue": "(args: RegaloComponent) => ({\n  component: RegaloComponent,\n  props: args,\n})"
-            },
-            {
-                "name": "Template",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "src/stories/Page.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story<Page>",
                 "defaultValue": "(args: Page) => ({\n  props: args,\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/regalo.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<RegaloComponent>",
+                "defaultValue": "(args: RegaloComponent) => ({\n  component: RegaloComponent,\n  props: {\n    ...args,\n    onViewDetails: action('onViewDetails')\n  },\n  template: `\n  <app-regalo \n    [presents]=presents\n    (onViewDetails)='onViewDetails($event)'\n    ></app-regalo>`\n})"
             }
         ],
         "functions": [],
@@ -676,7 +736,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story<RegaloComponent>",
-                    "defaultValue": "(args: RegaloComponent) => ({\n  component: RegaloComponent,\n  props: args,\n})"
+                    "defaultValue": "(args: RegaloComponent) => ({\n  component: RegaloComponent,\n  props: {\n    ...args,\n    onViewDetails: action('onViewDetails')\n  },\n  template: `\n  <app-regalo \n    [presents]=presents\n    (onViewDetails)='onViewDetails($event)'\n    ></app-regalo>`\n})"
                 }
             ],
             "src/environments/environment.prod.ts": [
@@ -839,12 +899,21 @@
                 "status": "low"
             },
             {
+                "filePath": "src/app/models/present.model.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "Present",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
                 "filePath": "src/app/regalo/regalo.component.ts",
                 "type": "component",
                 "linktype": "component",
                 "name": "RegaloComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/3",
+                "coverageCount": "0/5",
                 "status": "low"
             },
             {
