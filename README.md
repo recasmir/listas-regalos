@@ -3,18 +3,22 @@ Visualización de diferentes grupos de regalos en modo de scroll horizontal (par
 
 ## Background 
 Este proyecto ha sido creado para participar en la Hackathon de JOBarcelona '22 | Front-end.
+
 Es un componente para visualizar listas de regalos para diferentes tipos de gente. Cada lista de regalo se puede clicar y tendrá una acción determinada.
 
 ## Instalación y levantar proyecto
 
 clone `https://github.com/recasmir/listas-regalos.git`
+
 `npm install`
+
 `npm run storybook` en el puerto 6006
-`npm run start` en el puerto 4200
 
 ## Stack tecnológico
 Este proyecto está generado con Angular. 
+
 Libreria de Storybook para crear el componente de forma atómica.
+
 Framework Bootstrap para estilos.
 
 ## Contact info
