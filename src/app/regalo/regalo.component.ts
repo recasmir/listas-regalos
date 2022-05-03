@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Present } from '../models/present.model';
 
 @Component({
   selector: 'app-regalo',
@@ -7,7 +8,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class RegaloComponent implements OnInit {
 
-  @Input() presents: any [] = []; 
+  @Input() presents: Present [] = []; 
 
   @Output() onViewDetails = new EventEmitter<Event>();
 
@@ -15,12 +16,5 @@ export class RegaloComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-
-
-  // clickedViewDetails(presentID:number){
-  //   this.onViewDetails.emit({presentId: this.presents.id})
-  // }
-
 
 }
