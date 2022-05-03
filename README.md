@@ -7,7 +7,7 @@ Es un componente para visualizar listas de regalos para diferentes tipos de gent
 
 ## Instalación y levantar proyecto
 
-clone github
+clone `https://github.com/recasmir/listas-regalos.git`
 `npm install`
 `npm run storybook` en el puerto 6006
 `npm run start` en el puerto 4200
